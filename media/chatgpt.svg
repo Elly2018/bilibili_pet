@@ -1,0 +1,162 @@
+<svg id="gpt-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" width="100%" height="100%">
+  <defs>
+    <!-- OpenAI Mint/Emerald Green Gradient -->
+    <linearGradient id="gptHair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10A37F"/>
+      <stop offset="50%" stop-color="#00D293"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gptUniform" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    .gpt-twintail-l { transform-origin: 75px 125px; animation: gptHairL 3s infinite ease-in-out alternate; }
+    .gpt-twintail-r { transform-origin: 245px 125px; animation: gptHairR 3s infinite ease-in-out alternate; }
+    @keyframes gptHairL { from { transform: rotate(0deg); } to { transform: rotate(-5deg); } }
+    @keyframes gptHairR { from { transform: rotate(0deg); } to { transform: rotate(5deg); } }
+
+    .gpt-eyes-open { animation: gptBlink 4.2s infinite; transform-origin: 160px 175px; }
+    @keyframes gptBlink {
+      0%, 95%, 100% { transform: scaleY(1); }
+      97% { transform: scaleY(0.1); }
+    }
+
+    .g-mouth-normal, .g-mouth-pet, .g-mouth-feed, .g-mouth-poke, .g-mouth-play { display: none; }
+    .g-eyes-normal, .g-eyes-pet, .g-eyes-poke, .g-eyes-play { display: none; }
+    .g-cheeks-blush, .g-boba-cup, .g-sparkle-stars { display: none; }
+
+    .state-normal .g-mouth-normal, .state-normal .g-eyes-normal { display: inline; }
+    .state-pet .g-mouth-pet, .state-pet .g-eyes-pet, .state-pet .g-cheeks-blush { display: inline; }
+    .state-feed .g-mouth-feed, .state-feed .g-eyes-normal, .state-feed .g-boba-cup { display: inline; }
+    .state-play .g-mouth-play, .state-play .g-eyes-play, .state-play .g-sparkle-stars { display: inline; }
+    .state-poke .g-mouth-poke, .state-poke .g-eyes-poke, .state-poke .g-cheeks-blush { display: inline; }
+  </style>
+
+  <!-- Aura -->
+  <circle cx="160" cy="180" r="130" fill="#10A37F" opacity="0.12"/>
+
+  <!-- BACK TWINTAILS -->
+  <g class="gpt-twintail-l">
+    <path d="M75,125 C30,150 20,210 35,270 C45,295 70,270 65,240 C60,205 75,170 85,145 Z" fill="url(#gptHair)"/>
+  </g>
+  <g class="gpt-twintail-r">
+    <path d="M245,125 C290,150 300,210 285,270 C275,295 250,270 255,240 C260,205 245,170 235,145 Z" fill="url(#gptHair)"/>
+  </g>
+
+  <!-- BODY (Cyber Sailor School JK Uniform) -->
+  <g id="gpt-body">
+    <rect x="146" y="215" width="28" height="25" fill="#F8FAFC" rx="4"/>
+    <path d="M125,236 Q160,248 195,236 C220,255 240,310 240,335 L80,335 C80,310 100,255 125,236 Z" fill="url(#gptUniform)"/>
+    <!-- Sailor Collar (White & Teal) -->
+    <path d="M115,236 L160,285 L205,236 L185,236 L160,265 L135,236 Z" fill="#F8FAFC" stroke="#10A37F" stroke-width="2"/>
+    <!-- Teal Bowtie -->
+    <polygon points="150,250 160,256 150,262" fill="#10A37F"/>
+    <polygon points="170,250 160,256 170,262" fill="#10A37F"/>
+    <circle cx="160" cy="256" r="3.5" fill="#00D293"/>
+  </g>
+
+  <!-- HEAD & FACE -->
+  <path d="M104,140 C104,95 216,95 216,140 C216,195 194,228 160,228 C126,228 104,195 104,140 Z" fill="#FFFDF8"/>
+
+  <!-- Cheeks Blush -->
+  <ellipse cx="126" cy="188" rx="9" ry="5.5" fill="#F43F5E" opacity="0.35"/>
+  <ellipse cx="194" cy="188" rx="9" ry="5.5" fill="#F43F5E" opacity="0.35"/>
+  <g class="g-cheeks-blush">
+    <ellipse cx="126" cy="188" rx="12" ry="7.5" fill="#E11D48" opacity="0.6"/>
+    <ellipse cx="194" cy="188" rx="12" ry="7.5" fill="#E11D48" opacity="0.6"/>
+  </g>
+
+  <!-- Nose -->
+  <circle cx="160" cy="187" r="1.2" fill="#059669"/>
+
+  <!-- EYES (Normal State: Energetic Emerald Mint Green) -->
+  <g class="g-eyes-normal gpt-eyes-open">
+    <ellipse cx="134" cy="168" rx="10" ry="13" fill="#064E3B"/>
+    <ellipse cx="134" cy="169" rx="8.5" ry="11" fill="#10A37F"/>
+    <circle cx="134" cy="170" r="4.5" fill="#047857"/>
+    <circle cx="131" cy="164" r="3" fill="#FFF"/>
+    <circle cx="137" cy="173" r="1.5" fill="#FFF"/>
+    <path d="M120,161 Q134,151 148,159" fill="none" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+
+    <ellipse cx="186" cy="168" rx="10" ry="13" fill="#064E3B"/>
+    <ellipse cx="186" cy="169" rx="8.5" ry="11" fill="#10A37F"/>
+    <circle cx="186" cy="170" r="4.5" fill="#047857"/>
+    <circle cx="183" cy="164" r="3" fill="#FFF"/>
+    <circle cx="189" cy="173" r="1.5" fill="#FFF"/>
+    <path d="M172,159 Q186,151 200,161" fill="none" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- EYES (Pet State: Cheerful Wink ^_~) -->
+  <g class="g-eyes-pet">
+    <path d="M122,170 Q134,158 146,170" fill="none" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+    <ellipse cx="186" cy="168" rx="8" ry="10" fill="#10A37F"/>
+    <circle cx="184" cy="164" r="3" fill="#FFF"/>
+    <path d="M174,160 Q186,152 198,162" fill="none" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- EYES (Play: Big Sparkling Eyes >_<) -->
+  <g class="g-eyes-play">
+    <polygon points="134,160 136,166 142,168 136,170 134,176 132,170 126,168 132,166" fill="#00D293"/>
+    <polygon points="186,160 188,166 194,168 188,170 186,176 184,170 178,168 184,166" fill="#00D293"/>
+    <path d="M120,161 Q134,149 148,159" fill="none" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M172,159 Q186,149 200,161" fill="none" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- EYES (Poke: Derp / Silly Hallucination Face @ @) -->
+  <g class="g-eyes-poke">
+    <!-- Spiral confusion eyes -->
+    <path d="M134,168 m-8,0 a8,8 0 1,0 16,0 a5,5 0 1,0 -10,0 a2,2 0 1,0 4,0" fill="none" stroke="#0F172A" stroke-width="2"/>
+    <path d="M186,168 m-8,0 a8,8 0 1,0 16,0 a5,5 0 1,0 -10,0 a2,2 0 1,0 4,0" fill="none" stroke="#0F172A" stroke-width="2"/>
+  </g>
+
+  <!-- MOUTHS -->
+  <g class="g-mouth-normal">
+    <path d="M152,197 Q160,208 168,197 Z" fill="#F43F5E" stroke="#0F172A" stroke-width="1.8"/>
+  </g>
+  <g class="g-mouth-pet">
+    <path d="M150,197 Q160,212 170,197 Z" fill="#F43F5E" stroke="#0F172A" stroke-width="2"/>
+    <path d="M154,204 Q160,210 166,204" fill="#FDA4AF"/>
+  </g>
+  <g class="g-mouth-feed">
+    <ellipse cx="160" cy="201" rx="6" ry="4" fill="#F43F5E"/>
+  </g>
+  <g class="g-mouth-play">
+    <path d="M150,196 Q160,215 170,196 Z" fill="#F43F5E" stroke="#0F172A" stroke-width="2"/>
+  </g>
+  <g class="g-mouth-poke">
+    <!-- Silly tongue out 欸嘿~ -->
+    <path d="M154,198 Q160,204 166,198" fill="none" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M157,200 Q160,209 164,200 Z" fill="#FB7185" stroke="#0F172A" stroke-width="1.5"/>
+  </g>
+
+  <!-- FRONT HAIR & OPENAI FLOWER PIN -->
+  <g id="gpt-hair-front">
+    <path d="M100,126 C100,78 220,78 220,126 C205,116 185,134 172,122 C164,136 148,136 140,122 C125,134 112,118 100,126 Z" fill="url(#gptHair)"/>
+    <!-- Left flower pin (OpenAI knot shape) -->
+    <g transform="translate(105, 115) scale(0.8)">
+      <circle cx="0" cy="0" r="10" fill="#FFF" stroke="#10A37F" stroke-width="2"/>
+      <circle cx="0" cy="0" r="4" fill="#00D293"/>
+      <path d="M-6,-2 Q0,-8 6,-2 M6,2 Q0,8 -6,2" stroke="#10A37F" stroke-width="1.5" fill="none"/>
+    </g>
+  </g>
+
+  <!-- FEEDING: Boba Milk Tea -->
+  <g class="g-boba-cup" transform="translate(142, 255)">
+    <path d="M5,5 L10,35 L26,35 L31,5 Z" fill="#FEF08A" stroke="#78350F" stroke-width="1.5"/>
+    <rect x="3" y="1" width="30" height="5" rx="2" fill="#E2E8F0" stroke="#78350F" stroke-width="1.2"/>
+    <!-- Straw -->
+    <line x1="18" y1="-8" x2="18" y2="30" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
+    <!-- Tapioca pearls -->
+    <circle cx="14" cy="30" r="2.5" fill="#382110"/>
+    <circle cx="20" cy="29" r="2.5" fill="#382110"/>
+    <circle cx="16" cy="24" r="2.2" fill="#382110"/>
+  </g>
+
+  <!-- PLAYING: Sparkle Stars -->
+  <g class="g-sparkle-stars" transform="translate(195, 120)">
+    <polygon points="0,-8 2,-2 8,0 2,2 0,8 -2,2 -8,0 -2,-2" fill="#FDE047"/>
+  </g>
+</svg>

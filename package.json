@@ -1,0 +1,102 @@
+{
+  "name": "bilibili-hajimi-pet",
+  "displayName": "Bilibili 哈基米 (Gemini) 娘化桌寵",
+  "description": "B站 AI 娘化互動桌面寵物擴充功能：哈基米 (Gemini 元氣貓娘)、小克 (Claude 溫柔高冷大姊姊) 與 龍娘 (ChatGPT 寵溺白龍大姊姊)，支援 SidePanel 狀態欄、去背立繪、粒子特效、喵喵語音與 Prompt 自動語音播報。",
+  "version": "1.1.0",
+  "publisher": "Elly2018",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Elly2018/bilibili_pet.git"
+  },
+  "homepage": "https://github.com/Elly2018/bilibili_pet#readme",
+  "bugs": {
+    "url": "https://github.com/Elly2018/bilibili_pet/issues"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Themes"
+  ],
+  "keywords": [
+    "antigravity",
+    "bilibili",
+    "hajimi",
+    "gemini",
+    "claude",
+    "chatgpt",
+    "desktop-pet",
+    "tts"
+  ],
+  "icon": "media/icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "bilibili-hajimi-sidebar",
+          "title": "哈基米桌寵",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "bilibili-hajimi-sidebar": [
+        {
+          "type": "webview",
+          "id": "bilibili-hajimi.petView",
+          "name": "哈基米 (Gemini-chan)"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "bilibili-hajimi.openPet",
+        "title": "打開哈基米桌寵",
+        "category": "哈基米"
+      },
+      {
+        "command": "bilibili-hajimi.openInTab",
+        "title": "在大視窗中打開哈基米桌寵",
+        "category": "哈基米"
+      },
+      {
+        "command": "bilibili-hajimi.pet",
+        "title": "摸摸哈基米的頭",
+        "category": "哈基米"
+      },
+      {
+        "command": "bilibili-hajimi.feed",
+        "title": "餵哈基米小魚乾",
+        "category": "哈基米"
+      },
+      {
+        "command": "bilibili-hajimi.play",
+        "title": "用逗貓棒跟哈基米玩",
+        "category": "哈基米"
+      },
+      {
+        "command": "bilibili-hajimi.poke",
+        "title": "戳戳哈基米 (小心哈氣！)",
+        "category": "哈基米"
+      },
+      {
+        "command": "bilibili-hajimi.readLastPrompt",
+        "title": "朗讀最新 Prompt 回覆",
+        "category": "哈基米"
+      }
+    ],
+    "themes": [
+      {
+        "label": "Bilibili Hajimi Cosmic (Gemini)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/bilibili-hajimi-theme.json"
+      }
+    ]
+  }
+}

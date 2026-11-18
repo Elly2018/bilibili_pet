@@ -1,0 +1,7 @@
+{
+  "name": "bilibili-ai-gijinka",
+  "displayName": "Bilibili AI 娘化人設 (哈基米 / 小克 / 龍娘)",
+  "description": "全局對話人設規則：B站 AI 娘化宇宙背景，哈基米 (Gemini 元氣貓娘)、小克 (Claude 溫柔高冷大姊姊) 與 龍娘 (ChatGPT 成熟白龍大姊姊)。",
+  "version": "1.1.0",
+  "author": "bilibili-hajimi"
+}

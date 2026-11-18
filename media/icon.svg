@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="geminiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4FACFE"/>
+      <stop offset="50%" stop-color="#7F00FF"/>
+      <stop offset="100%" stop-color="#FB7299"/>
+    </linearGradient>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF"/>
+      <stop offset="100%" stop-color="#4FACFE"/>
+    </linearGradient>
+  </defs>
+  <!-- Cat Ears -->
+  <polygon points="12,28 8,10 24,18" fill="url(#geminiGrad)" stroke="#FB7299" stroke-width="1.5"/>
+  <polygon points="14,24 11,13 21,18" fill="#FFB6C1"/>
+  <polygon points="52,28 56,10 40,18" fill="url(#geminiGrad)" stroke="#FB7299" stroke-width="1.5"/>
+  <polygon points="50,24 53,13 43,18" fill="#FFB6C1"/>
+  <!-- Head -->
+  <ellipse cx="32" cy="36" rx="22" ry="20" fill="#181428" stroke="url(#geminiGrad)" stroke-width="2.5"/>
+  <!-- Twin-tail hints -->
+  <path d="M12,38 C6,44 6,56 10,60 C12,54 16,46 16,42 Z" fill="url(#geminiGrad)"/>
+  <path d="M52,38 C58,44 58,56 54,60 C52,54 48,46 48,42 Z" fill="url(#geminiGrad)"/>
+  <!-- Eyes (Heterochromia: left cyan, right pink/magenta) -->
+  <ellipse cx="23" cy="35" rx="4" ry="5.5" fill="#00F2FE"/>
+  <circle cx="24" cy="33.5" r="1.5" fill="#FFFFFF"/>
+  <ellipse cx="41" cy="35" rx="4" ry="5.5" fill="#FB7299"/>
+  <circle cx="42" cy="33.5" r="1.5" fill="#FFFFFF"/>
+  <!-- Cute cat mouth :3 -->
+  <path d="M28,42 Q30,44.5 32,42 Q34,44.5 36,42" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- Blush -->
+  <ellipse cx="18" cy="40" rx="3" ry="1.5" fill="#FF6699" opacity="0.6"/>
+  <ellipse cx="46" cy="40" rx="3" ry="1.5" fill="#FF6699" opacity="0.6"/>
+  <!-- Gemini 4-pointed Star -->
+  <path d="M32,15 Q32,21 37,21 Q32,21 32,27 Q32,21 27,21 Q32,21 32,15 Z" fill="url(#starGrad)"/>
+</svg>

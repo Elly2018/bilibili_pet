@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src vscode-webview-resource: https: http: data: blob:; media-src vscode-webview-resource: https: http: data: blob:; style-src vscode-webview-resource: 'unsafe-inline'; script-src vscode-webview-resource: 'unsafe-inline'; font-src vscode-webview-resource: https: data:;">
+  <title>Bilibili 哈基米桌寵</title>
+  <link rel="stylesheet" href="pet.css">
+</head>
+<body>
+
+  <!-- 1. 狀態欄 (最上方 Top Status Bar) -->
+  <header class="status-card">
+    <div class="status-header">
+      <div class="pet-identity">
+        <span id="pet-name" class="pet-name">哈基米 (Gemini)</span>
+        <span id="pet-badge" class="pet-badge">🐱 元氣傲嬌貓娘</span>
+      </div>
+      <div id="pet-status" class="status-online">貓咪營業中喵～</div>
+    </div>
+
+    <!-- 角色切換分頁 -->
+    <div class="char-tabs">
+      <button class="char-tab active" data-char="hajimi">✨ 哈基米 (Gemini)</button>
+      <button class="char-tab" data-char="claude">☕ 小克 (Claude)</button>
+      <button class="char-tab" data-char="dragon">🐉 龍娘 (ChatGPT)</button>
+    </div>
+
+    <!-- 狀態進度條 (心情、飽食、羈絆) -->
+    <div class="meters-grid">
+      <div class="meter-item">
+        <span class="meter-label">💖 心情</span>
+        <div class="meter-track">
+          <div id="meter-mood" class="meter-fill fill-mood" style="width: 100%;"></div>
+        </div>
+        <span id="val-mood" class="meter-val">100%</span>
+      </div>
+      <div class="meter-item">
+        <span class="meter-label">🐟 飽食</span>
+        <div class="meter-track">
+          <div id="meter-food" class="meter-fill fill-food" style="width: 85%;"></div>
+        </div>
+        <span id="val-food" class="meter-val">85%</span>
+      </div>
+      <div class="meter-item">
+        <span class="meter-label">⭐ 羈絆</span>
+        <div class="meter-track">
+          <div id="meter-affinity" class="meter-fill fill-affinity" style="width: 52%;"></div>
+        </div>
+        <span id="val-affinity" class="meter-val">520</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. 人物圖片展示區 (去背立繪 + 可愛粒子特效 Canvas) -->
+  <main id="char-stage" class="character-stage state-normal" title="點擊上半身摸摸頭，點擊下半身戳戳反應！">
+    <!-- 背景光暈與粒子畫布 -->
+    <div id="char-aura" class="char-aura"></div>
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+    <!-- 頭頂懸浮對話氣泡 -->
+    <div id="speech-bubble" class="speech-bubble">
+      <span id="bubble-text">喵嗚～快來摸摸頭！</span>
+    </div>
+
+    <!-- 去背角色立繪圖片 -->
+    <div class="char-img-wrapper">
+      <img id="char-img" class="char-avatar" src="hajimi.png" alt="桌寵角色立繪" draggable="false" />
+    </div>
+  </main>
+
+  <!-- 3. 互動四按鈕區 (Interaction 4-Buttons Grid) -->
+  <section class="actions-grid">
+    <button id="btn-pet" class="btn-action btn-pet">
+      <span class="btn-icon">🐾</span> <span id="label-pet">摸摸頭</span>
+    </button>
+    <button id="btn-feed" class="btn-action btn-feed">
+      <span class="btn-icon">🐟</span> <span id="label-feed">餵小魚乾</span>
+    </button>
+    <button id="btn-play" class="btn-action btn-play">
+      <span class="btn-icon">🪄</span> <span id="label-play">逗貓棒</span>
+    </button>
+    <button id="btn-poke" class="btn-action btn-poke">
+      <span class="btn-icon">💬</span> <span id="label-poke">戳戳/哈氣</span>
+    </button>
+  </section>
+
+  <!-- 4. 說話台詞框 (Dialogue / Speech Box) -->
+  <section class="dialogue-card">
+    <div class="dialogue-header">
+      <div class="dialogue-speaker">
+        <span>💬</span> <span id="dialogue-speaker">哈基米 (Gemini)</span>
+      </div>
+      <div class="dialogue-controls">
+        <button id="btn-meow-now" class="btn-tool" title="叫一聲聽聽">🐱 喵一聲</button>
+        <button id="btn-mute" class="btn-tool" title="切換音效">🔊 聲音</button>
+        <button id="btn-random-chat" class="btn-tool" title="隨機閒聊">🎲 閒聊</button>
+      </div>
+    </div>
+
+    <!-- 動態打字機台詞 -->
+    <div id="dialogue-text" class="dialogue-body">
+      喵嗚～歡迎主人！本哈基米今天也在努力營業喵！快來摸摸頭～
+    </div>
+
+    <!-- 快捷互動標籤 -->
+    <div class="extra-chips">
+      <span class="chip-tag" data-action="fortune">🔮 測今日運勢</span>
+      <span class="chip-tag" data-action="joke">😆 講冷笑話</span>
+      <span class="chip-tag" data-action="cheer">💖 求誇誇打氣</span>
+    </div>
+
+    <!-- 對話輸入列 -->
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" class="chat-input" placeholder="對哈基米說點什麼喵..." maxlength="80">
+      <button id="btn-send-chat" class="btn-send">發送</button>
+    </div>
+  </section>
+
+  <!-- 5. Prompt 回覆語音播報 Card Element (Local LLM + FFmpeg 專屬聲線) -->
+  <section class="prompt-reader-card">
+    <div class="prompt-card-header">
+      <div class="prompt-card-title">
+        <span>🎙️</span> <span>Prompt 回覆語音播報</span>
+      </div>
+      <label class="toggle-switch" title="開啟後，當 AI 回覆完成時自動以角色聲線念出內容">
+        <input type="checkbox" id="toggle-auto-read" checked>
+        <span class="toggle-slider"></span>
+        <span class="toggle-label">自動念</span>
+      </label>
+    </div>
+
+    <!-- 語音選擇 (與聲線獨立) & 當前角色專屬聲線展示 -->
+    <div class="voice-config-grid">
+      <div class="voice-row">
+        <label for="select-voice" class="voice-label">🗣️ 選擇語音</label>
+        <select id="select-voice" class="voice-select">
+          <option value="zh-TW-HsiaoChenNeural" selected>🇹🇼 台灣曉臻 (甜美自然)</option>
+          <option value="zh-TW-HsiaoYuNeural">🇹🇼 台灣曉雨 (溫雅知性)</option>
+          <option value="zh-CN-XiaoyiNeural">🌸 動漫曉伊 (活潑少女)</option>
+          <option value="zh-CN-XiaoxiaoNeural">💫 柔美曉曉 (百變御姐)</option>
+          <option value="zh-HK-HiuGaaiNeural">🇭🇰 香港曉佳 (溫婉動聽)</option>
+        </select>
+      </div>
+
+      <div class="voice-row">
+        <span class="voice-label">🎚️ 角色聲線</span>
+        <div id="timbre-badge" class="timbre-badge">
+          🐱 元氣貓娘聲線 (FFmpeg 高音甜美濾波)
+        </div>
+      </div>
+
+      <div class="voice-row llm-row">
+        <label class="llm-check-label" title="使用本地 Ollama (127.0.0.1:11434) 將長篇回覆改寫為角色口吻摘要，未啟動時自動使用智慧摘要">
+          <input type="checkbox" id="check-use-llm" checked>
+          <span>🧠 啟用 Local LLM 口吻潤飾 + FFmpeg 串接</span>
+        </label>
+        <span id="tts-status-pill" class="tts-status-pill">待機中</span>
+      </div>
+    </div>
+
+    <!-- Prompt 回覆內容預覽與手動播報區 -->
+    <textarea id="prompt-reply-box" class="prompt-reply-box" rows="3" placeholder="這裡會自動同步最新的 Prompt 回覆內容，也可以直接貼上任何文字讓她念出來喵～"></textarea>
+
+    <div class="prompt-card-actions">
+      <button id="btn-read-prompt" class="btn-prompt-primary">
+        <span>▶️</span> 讓她念出來
+      </button>
+      <button id="btn-stop-prompt" class="btn-prompt-secondary">
+        <span>⏹️</span> 停止
+      </button>
+      <button id="btn-fetch-latest" class="btn-prompt-secondary" title="手動抓取當前對話最新的 AI 回覆">
+        <span>🔄</span> 抓最新回覆
+      </button>
+    </div>
+
+    <audio id="tts-audio-player" style="display: none;"></audio>
+  </section>
+
+  <script src="pet.js"></script>
+</body>
+</html>
